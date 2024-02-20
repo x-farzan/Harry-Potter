@@ -59,7 +59,9 @@ const CharacterDetail = () => {
                 <td>
                   <strong>DOB</strong>
                 </td>
-                <td>{character?.dateOfBirth}</td>
+                <td>
+                  {character?.dateOfBirth ? character?.dateOfBirth : "Unknown"}
+                </td>
               </tr>
               <tr>
                 <td>
