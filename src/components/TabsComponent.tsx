@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const TabsComponent = () => {
-  const [active, setActive] = useState(1);
-
-  // Return styling according to the state
-  const style = (active: Number) => {
-    return {
-      backgroundColor: active === 1 ? "black" : "",
-      color: active === 1 ? "white" : "black",
-    };
-  };
+  const [active, setActive] = useState(1);  
   const houses = [
     {
       index: 1,
