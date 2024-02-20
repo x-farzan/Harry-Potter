@@ -6,6 +6,7 @@ import CharacterDetail from "./components/CharacterDetail";
 import Students from "./pages/Students";
 import Staff from "./pages/Staff";
 import Spells from "./pages/Spells";
+import Houses from "./pages/Houses";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/students" element={<Students />} />
       <Route path="/staff" element={<Staff />} />
       <Route path="/spells" element={<Spells />} />
+      <Route path="/houses" element={<Houses />} />
     </Routes>
   );
 }
