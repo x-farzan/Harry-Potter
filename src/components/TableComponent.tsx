@@ -1,6 +1,11 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const TableComponent = (props: any) => {
+  const navigate = useNavigate();
+  const handleClick: any = (id: String) => {
+    navigate(`/character/${id}`);
+  };
+
   return (
     <div className="table-responsive">
       <table className="table">
@@ -42,7 +47,13 @@ const TableComponent = (props: any) => {
               <td>{student.eyeColour}</td>
               <td>{student.species}</td>
               <td>{student.house}</td>
-              <td>{<button>View Detail</button>}</td>
+              <td>
+                {
+                  <button onClick={() => handleClick(student.id)}>
+                    View Detail
+                  </button>
+                }
+              </td>
             </tr>
           ))}
         </tbody>
