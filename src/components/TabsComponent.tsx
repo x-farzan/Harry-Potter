@@ -1,7 +1,13 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Container, Row } from "react-bootstrap";
+import CardComponent from "./CardComponent";
+import TableComponent from "./TableComponent";
 
 const TabsComponent = () => {
-  const [active, setActive] = useState(1);  
+  const [active, setActive] = useState(1);
+  const [house, setHouse] = useState(`gryffindor`);
+  const [houseData, setHouseData] = useState([]);
   const houses = [
     {
       index: 1,
@@ -41,6 +47,18 @@ const TabsComponent = () => {
     },
   ];
 
+  const fetchHouse = async () => {
+    const response = await axios.get(
+      `https://hp-api.onrender.com/api/characters/house/${house}`
+    );
+    setHouseData(response.data);
+    console.log(houseData);
+  };
+
+  useEffect(() => {
+    fetchHouse();
+  }, []);
+
   return (
     <>
       <ul
@@ -62,6 +80,9 @@ const TabsComponent = () => {
           </li>
         ))}
       </ul>
+
+      {/* Listing data-rows below */}
+      {<TableComponent houseData={houseData} />}
     </>
   );
 };
