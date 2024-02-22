@@ -13,6 +13,7 @@ const TabsComponent = () => {
       index: 1,
       id: "pills-gryffindor-tab",
       name: "Godric Gryffindor",
+      houseName: "gryffindor",
       style: {
         backgroundColor: active === 1 ? "black" : "",
         color: active === 1 ? "white" : "black",
@@ -22,6 +23,7 @@ const TabsComponent = () => {
       index: 2,
       id: "pills-slytherin-tab",
       name: "Salazar Slytherin",
+      houseName: "slytherin",
       style: {
         backgroundColor: active === 2 ? "black" : "",
         color: active === 2 ? "white" : "black",
@@ -31,6 +33,7 @@ const TabsComponent = () => {
       index: 3,
       id: "pills-ravenclaw-tab",
       name: "Rowena Ravenclaw",
+      houseName: "ravenclaw",
       style: {
         backgroundColor: active === 3 ? "black" : "",
         color: active === 3 ? "white" : "black",
@@ -40,12 +43,18 @@ const TabsComponent = () => {
       index: 4,
       id: "pills-hufflepuff-tab",
       name: "Helga Hufflepuff",
+      houseName: "hufflepuff",
       style: {
         backgroundColor: active === 4 ? "black" : "",
         color: active === 4 ? "white" : "black",
       },
     },
   ];
+
+  const handleTabClick = (house: any) => {
+    setHouse(house.houseName);
+    setActive(house.index);
+  };
 
   const fetchHouse = async () => {
     const response = await axios.get(
@@ -57,7 +66,7 @@ const TabsComponent = () => {
 
   useEffect(() => {
     fetchHouse();
-  }, []);
+  }, [active]);
 
   return (
     <>
@@ -71,9 +80,10 @@ const TabsComponent = () => {
             <button
               className="nav-link"
               id={house.id}
+              name={house.name}
               type="button"
               style={house.style}
-              onClick={() => setActive(house.index)}
+              onClick={() => handleTabClick(house)}
             >
               {house.name}
             </button>
