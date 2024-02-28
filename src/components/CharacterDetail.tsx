@@ -23,6 +23,7 @@ const CharacterDetail = () => {
     <>
       <NavigationBar />
       <div className="container mt-5 p-4">
+        {/* Image area */}
         <div className="row">
           <div className="col-4 d-flex justify-content-center align-items-center">
             <img
@@ -35,6 +36,8 @@ const CharacterDetail = () => {
               style={{ width: 200, height: 200 }}
             />
           </div>
+
+          {/* Character info table */}
           <div className="col-8">
             <table className="table">
               <tr className="">
