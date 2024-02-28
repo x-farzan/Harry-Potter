@@ -8,7 +8,7 @@ const Search = (props: any) => {
       <div className="" style={{ margin: "2% 32% 0 33%" }}>
         <InputGroup className="mb-3">
           <Form.Control
-            placeholder="Search"
+            placeholder="Enter name here to search ..."
             aria-label="Search"
             aria-describedby="basic-addon2"
             onChange={(e) => props.handleSearch(e.target.value)}

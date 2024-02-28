@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import CardComponent from "./CardComponent";
 import TableComponent from "./TableComponent";
+import Search from "./Search";
 
 const TabsComponent = () => {
   const [active, setActive] = useState(1);
   const [house, setHouse] = useState(`gryffindor`);
   const [houseData, setHouseData] = useState([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<any[]>([]);
   const houses = [
     {
       index: 1,
@@ -51,6 +53,13 @@ const TabsComponent = () => {
     },
   ];
 
+  const handleSearch = (e: String): any => {
+    const filteredData = houseData.filter((character: any) =>
+      character.name.toLowerCase().includes(e.toLowerCase())
+    );
+    setFilteredCharacters(filteredData);
+  };
+
   const handleTabClick = (house: any) => {
     setHouse(house.houseName);
     setActive(house.index);
@@ -70,8 +79,9 @@ const TabsComponent = () => {
 
   return (
     <>
+      <Search handleSearch={handleSearch} />
       <ul
-        className="nav nav-pills mx-5 my-5 d-flex justify-content-between"
+        className="nav nav-pills mx-5 my-5 d-flex justify-content-center"
         id="pills-tab"
         role="tablist"
       >
@@ -92,7 +102,13 @@ const TabsComponent = () => {
       </ul>
 
       {/* Listing data-rows below */}
-      {<TableComponent houseData={houseData} />}
+      {
+        <TableComponent
+          houseData={
+            filteredCharacters.length !== 0 ? filteredCharacters : houseData
+          }
+        />
+      }
     </>
   );
 };
