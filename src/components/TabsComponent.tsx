@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Dropdown, Row } from "react-bootstrap";
 import CardComponent from "./CardComponent";
 import TableComponent from "./TableComponent";
 import Search from "./Search";
+import DropDown from "./DropDown";
 
 const TabsComponent = () => {
   const [active, setActive] = useState(1);
@@ -80,6 +81,7 @@ const TabsComponent = () => {
   return (
     <>
       <Search handleSearch={handleSearch} />
+      <DropDown />
       <ul
         className="nav nav-pills mx-5 my-5 d-flex justify-content-center"
         id="pills-tab"
